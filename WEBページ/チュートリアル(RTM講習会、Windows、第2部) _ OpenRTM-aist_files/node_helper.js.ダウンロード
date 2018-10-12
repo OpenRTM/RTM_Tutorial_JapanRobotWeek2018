@@ -1,0 +1,25 @@
+(function($) {
+  $(function() {
+    var settings = Drupal.settings.node_helper;
+    /**/console.log(settings);
+ 
+    // settings.simplify_the_multi_field.
+    if (settings.simplify_the_multi_field['#value'].length) {
+      var items = settings.simplify_the_multi_field['#value'].replace(/[\r\n]+/, ',').split(',');
+      for (var i = 0; i < items.length; i++) {
+        var id = items[i].split(':')[0].replace('_', '-');
+        $('#' + id + '-und-0-multi-field-wrapper').each(function() {
+          var error = '.messages.error.messages-inline';
+          if ($(this).find(error) && $(this).find(error).length) {
+            $(this).find(error).addClass("hidden");
+            $(this).parent().parent().parent().append(
+              '<div class="clearfix"></div>' +
+              '<div class="messages error messages-inline">' + $(this).find(error).html() + '</div>'
+            );
+          }
+        });
+      }
+    }
+
+  });
+}) (jQuery);

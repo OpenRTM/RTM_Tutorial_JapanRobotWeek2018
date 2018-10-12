@@ -1,8 +1,0 @@
-(function($) {
-  $(function() {
-    var n = 2;
-    $('#block-superfish-' + n).removeClass('block-superfish-' + n).addClass('block-superfish-1');
-    $('#block-superfish-' + n).attr('id', 'block-superfish-1');
-    $('#superfish-' + n).attr('id', 'superfish-1');
-  });
-}) (jQuery);
